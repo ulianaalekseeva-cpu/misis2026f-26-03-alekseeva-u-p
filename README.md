@@ -1,1 +1,13 @@
-# misis2026f-26-03-alekseeva-u-p
+#include <iostream>
+
+int main() {
+	int w;
+	std::cin >> w;
+	if (w % 2 == 0 && w>2) {
+		std::cout << "Yes";
+	}
+	else {
+		std::cout << "no";
+	}
+
+}
