@@ -1,0 +1,20 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    long long n, c=0;
+    string s;
+    cin >> n>>s;
+    vector <string>qw(n);
+    for (int i = 0; i < n;i++) {
+        qw[i] = s[i];
+    }
+    for (int i = 1; i < n-1; i++) {
+        if (qw[i - 1] == qw[i] && qw[i] == qw[i + 1] && qw[i] == "x") {
+            c++;
+        }
+    }
+    cout << c;
+}
