@@ -3,32 +3,46 @@ project(misis2026f-cpp)
 
 set(CMAKE_CXX_STANDARD 20)
 
-# Ищем все cpp файлы
-file(GLOB_RECURSE ALL_SOURCES "*.cpp")
+# ==========================================
+# 1. БИБЛИОТЕКИ ДЛЯ ПРОВЕРКИ (Обязательно!)
+# ==========================================
+# Проверяющая система ищет библиотеки с именами "complex" и "rational".
+# Поэтому мы собираем их СТРОГО как библиотеки, а не как программы.
 
-# Игнорируем мусорные папки
-set(IGNORE_DIRS "out/*" ".vs/*" "build/*" "cmake-build-*/*")
+add_library(complex 
+    prj.labs/complex/complex.cpp 
+    prj.labs/complex/complex.hpp
+)
+target_include_directories(complex PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/complex)
 
-foreach(src ${ALL_SOURCES})
-    set(IS_IGNORED FALSE)
-    foreach(ignore_dir ${IGNORE_DIRS})
-        if(src MATCHES "${ignore_dir}")
-            set(IS_IGNORED TRUE)
-        endif()
-    endforeach()
+add_library(rational 
+    prj.labs/rational/rational.cpp 
+    prj.labs/rational/rational.h
+)
+target_include_directories(rational PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/rational)
 
-    if(NOT IS_IGNORED)
-        # Берем ТОЛЬКО имя файла (без пути). Например: 0004A или lalala
-        get_filename_component(target_name ${src} NAME_WE)
-        
-        # Если два файла называются одинаково (например, два main.cpp), 
-        # добавляем к имени папку, чтобы CMake не ругался на дубликаты.
-        if(TARGET ${target_name})
-            get_filename_component(parent_dir ${src} DIRECTORY)
-            get_filename_component(parent_name ${parent_dir} NAME)
-            set(target_name "${parent_name}_${target_name}")
-        endif()
+# ==========================================
+# 2. ТВОИ ЛИЧНЫЕ ПРОГРАММЫ (Для запуска вручную)
+# ==========================================
+# Теперь, чтобы ты могла запустить свои main.cpp, мы делаем для них отдельные exe.
+# Называем их с префиксом "my_", чтобы не конфликтовать с проверкой.
 
-        add_executable(${target_name} ${src})
-    endif()
+add_executable(my_complex_main prj.labs/complex/main.cpp)
+target_link_libraries(my_complex_main PRIVATE complex)
+
+add_executable(my_rational_main prj.labs/rational/main.cpp)
+target_link_libraries(my_rational_main PRIVATE rational)
+
+# ==========================================
+# 3. АВТОСБОРКА КОДФОРСЕСА (Только папка prj.codeforces)
+# ==========================================
+# Мы УБРАЛИ GLOB_RECURSE по всему проекту! Теперь он смотрит только в prj.codeforces.
+# Иначе он залезет в prj.check и сломает всё.
+
+file(GLOB CODEFORCES_SOURCES "prj.codeforces/*.cpp")
+
+foreach(src ${CODEFORCES_SOURCES})
+    get_filename_component(target_name ${src} NAME_WE)
+    # Добавляем префикс cf_, чтобы имена точно не пересеклись
+    add_executable(cf_${target_name} ${src})
 endforeach()
