@@ -1,70 +1,15 @@
 CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
-  _add_executable cannot create target "doctest_complex" because another
-  target with the same name already exists.  The existing target is an
-  executable created in source directory
-  "D:/projects/misis2026f-check/misis2026f-26-03-alekseeva-u-p".  See
-  documentation for policy CMP0002 for more details.
+  Cannot find source file:
+
+    prj.labs/rational/main.cpp
 Call Stack (most recent call first):
-  prj.check/prj.check/doctest_complex/CMakeLists.txt:1 (add_executable)
-
-
-CMake Error at prj.check/prj.check/doctest_complex/CMakeLists.txt:2 (target_link_libraries):
-  Target "complex" of type EXECUTABLE may not be linked into another target.
-  One may link only to INTERFACE, OBJECT, STATIC or SHARED libraries, or to
-  executables with the ENABLE_EXPORTS property set.
+  CMakeLists.txt:33 (add_executable)
 
 
 CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
-  _add_executable cannot create target "doctest_complex_io" because another
-  target with the same name already exists.  The existing target is an
-  executable created in source directory
-  "D:/projects/misis2026f-check/misis2026f-26-03-alekseeva-u-p".  See
-  documentation for policy CMP0002 for more details.
+  No SOURCES given to target: my_rational_main
 Call Stack (most recent call first):
-  prj.check/prj.check/doctest_complex/CMakeLists.txt:6 (add_executable)
+  CMakeLists.txt:33 (add_executable)
 
 
-CMake Error at prj.check/prj.check/doctest_complex/CMakeLists.txt:7 (target_link_libraries):
-  Target "complex" of type EXECUTABLE may not be linked into another target.
-  One may link only to INTERFACE, OBJECT, STATIC or SHARED libraries, or to
-  executables with the ENABLE_EXPORTS property set.
-
-
-CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
-  _add_executable cannot create target "doctest_rational" because another
-  target with the same name already exists.  The existing target is an
-  executable created in source directory
-  "D:/projects/misis2026f-check/misis2026f-26-03-alekseeva-u-p".  See
-  documentation for policy CMP0002 for more details.
-Call Stack (most recent call first):
-  prj.check/prj.check/doctest_rational/CMakeLists.txt:1 (add_executable)
-
-
-CMake Error at prj.check/prj.check/doctest_rational/CMakeLists.txt:2 (target_link_libraries):
-  Target "rational" of type EXECUTABLE may not be linked into another target.
-  One may link only to INTERFACE, OBJECT, STATIC or SHARED libraries, or to
-  executables with the ENABLE_EXPORTS property set.
-
-
-CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
-  _add_executable cannot create target "doctest_rational_io" because another
-  target with the same name already exists.  The existing target is an
-  executable created in source directory
-  "D:/projects/misis2026f-check/misis2026f-26-03-alekseeva-u-p".  See
-  documentation for policy CMP0002 for more details.
-Call Stack (most recent call first):
-  prj.check/prj.check/doctest_rational/CMakeLists.txt:5 (add_executable)
-
-
-CMake Error at prj.check/prj.check/doctest_rational/CMakeLists.txt:6 (target_link_libraries):
-  Target "rational" of type EXECUTABLE may not be linked into another target.
-  One may link only to INTERFACE, OBJECT, STATIC or SHARED libraries, or to
-  executables with the ENABLE_EXPORTS property set.
-
-
-CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
-  The target name "test" is reserved when CTest testing is enabled.
-Call Stack (most recent call first):
-  CMakeLists.txt:32 (add_executable)
-
-
+CMake Generate step failed.  Build files cannot be regenerated correctly.
