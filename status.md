@@ -1,4 +1,4 @@
-STAMP: 20261105-165936
+STAMP: 20261105-173718
 ERROR: file codeforces.id is absent
 ERROR: file codeforces.id is absent
 ERROR: file prj.codeforces/CMakeLists.txt is absent
@@ -20,7 +20,7 @@ ERROR: file prj.labs/rational/rational.hpp is absent
 ERROR: file prj.test/CMakeLists.txt is absent
 ERROR: file prj.test/complex_test.cpp is absent
 ERROR: file prj.test/rational_test.cpp is absent
-OK: CMake generator successed
+ERROR: CMake generator failed
 ERROR: invalid file name 0004A
 ERROR: invalid file name 0263A
 ERROR: invalid file name 0271A
