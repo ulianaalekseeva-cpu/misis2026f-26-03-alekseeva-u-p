@@ -2,8 +2,6 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 void solve() {
     std::string s;
     std::cin >> s;
@@ -36,6 +34,5 @@ int main() {
     while (t--) {
         solve();
     }
-
     return 0;
 }

@@ -2,13 +2,10 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
-
-
 int main() {
 	int t;
 	std::cin >> t;
 	std::vector<int>V(t);
-
 	while (t--) {
 		int n, m, s1, s2, d;
 		std::cin >> n >> m >> s1 >> s2 >> d;
@@ -24,7 +21,6 @@ int main() {
 		if (V[i] != 0) {
 			std::cout << V[i] << std::endl;
 		}
-
 	}
 	return 0;
 }

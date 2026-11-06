@@ -2,10 +2,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-
 vector<int>ans;
-
-
 void solve() {
 	int n, x;
 	std::cin >> n >> x;

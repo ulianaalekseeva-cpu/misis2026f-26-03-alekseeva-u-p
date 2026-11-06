@@ -1,29 +1,29 @@
 #include <iostream>
-#include <vector>
-using namespace std;
+#include <algorithm>
 
 int main() {
-	int n, k;
+	int n;
+	long long k;
 	std::cin >> n >> k;
 
-	struct point {
-		int f;
-		int t;
-	};
-	vector <point>V(n);
-	for (int i = 0; i < n; i++) {
-		std::cin >> V[i].f>>V[i].t;
-	}
-	for (int i = 0; i < n; i++) {
-		if (V[i].t > k) {
-			V[i].f = V[i].f - (V[i].t - k);
+	long long max_satisfaction = -2000000000000000000LL;
+
+	for (int i = 0; i < n; ++i) {
+		long long f, t;
+		std::cin >> f >> t;
+
+		long long current_satisfaction;
+		if (t > k) {
+			current_satisfaction = f - (t - k);
 		}
-	}
-	int ansf = -10000000;
-	for (int i = 0; i < n; i++) {
-		if (V[i].f > ansf) {
-			ansf = V[i].f;
+		else {
+			current_satisfaction = f;
 		}
+
+		max_satisfaction = std::max(max_satisfaction, current_satisfaction);
 	}
-	std::cout << ansf;
+
+	std::cout << max_satisfaction << "\n";
+
+	return 0;
 }

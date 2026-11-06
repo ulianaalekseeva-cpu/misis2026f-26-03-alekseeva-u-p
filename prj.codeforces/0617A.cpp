@@ -9,4 +9,5 @@ int main() {
 	else {
 		std::cout << (r / 5) + 1;
 	}
+
 }

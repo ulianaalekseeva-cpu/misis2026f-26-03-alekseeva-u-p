@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-using namespace std;
-
 int main() {
     int k;
     std::cin >> k;
@@ -26,7 +24,6 @@ int main() {
             }
         }
         V[i]=sh;
-
     }
     for (int i = 0; i < V.size(); i++) {
         std::cout << V[i] << std::endl;

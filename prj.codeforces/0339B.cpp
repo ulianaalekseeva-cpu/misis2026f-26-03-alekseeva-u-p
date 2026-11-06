@@ -1,23 +1,26 @@
 #include <iostream>
-#include <algorithm>
 
 int main() {
-	int n, m, c = 0;
-	int m1= 1;
+	int n, m;
 	std::cin >> n >> m;
-	for (int i = 0; i < m; i++) {
-		int m2;
-		std::cin >> m2;
-		if (m2 - m1 > 0) {
-			c += m2 - m1;
+
+	long long total_time = 0;
+	int current_pos = 1;
+
+	for (int i = 0; i < m; ++i) {
+		int target;
+		std::cin >> target;
+
+		if (target >= current_pos) {
+			total_time += (target - current_pos);
 		}
-		else if (m2 - m1 < 0) {
-			c += 4 - (m1 - m2);
+		else {
+			total_time += (n - current_pos + target);
 		}
-		else if (m2==m1){
-			c+=0;
-		}
-		m1 = m2;
+		current_pos = target;
 	}
-	std::cout << c;
+
+	std::cout << total_time << "\n";
+
+	return 0;
 }
