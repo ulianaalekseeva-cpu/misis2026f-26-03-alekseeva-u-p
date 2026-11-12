@@ -1,29 +1,29 @@
-CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
+CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:649 (_add_library):
   Cannot find source file:
 
-    prj.labs/complex/main.cpp
+    prj.labs/complex/complex.h
 Call Stack (most recent call first):
-  CMakeLists.txt:30 (add_executable)
+  CMakeLists.txt:11 (add_library)
 
 
-CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
+CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:649 (_add_library):
   Cannot find source file:
 
-    prj.labs/rational/main.cpp
+    prj.labs/rational/rational.h
 Call Stack (most recent call first):
-  CMakeLists.txt:33 (add_executable)
+  CMakeLists.txt:17 (add_library)
 
 
-CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
-  No SOURCES given to target: my_complex_main
+CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:649 (_add_library):
+  No SOURCES given to target: complex
 Call Stack (most recent call first):
-  CMakeLists.txt:30 (add_executable)
+  CMakeLists.txt:11 (add_library)
 
 
-CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:608 (_add_executable):
-  No SOURCES given to target: my_rational_main
+CMake Error at D:/programs/vcpkg/scripts/buildsystems/vcpkg.cmake:649 (_add_library):
+  No SOURCES given to target: rational
 Call Stack (most recent call first):
-  CMakeLists.txt:33 (add_executable)
+  CMakeLists.txt:17 (add_library)
 
 
 CMake Generate step failed.  Build files cannot be regenerated correctly.
