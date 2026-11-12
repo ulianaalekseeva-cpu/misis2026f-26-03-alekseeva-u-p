@@ -1,4 +1,4 @@
-#include "rational.h"
+#include "rational.hpp"
 #include <numeric>
 #include <stdexcept>
 

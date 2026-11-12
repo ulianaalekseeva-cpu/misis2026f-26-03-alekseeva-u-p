@@ -10,13 +10,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_library(complex
     prj.labs/complex/complex.cpp
-    prj.labs/complex/complex.h
+    prj.labs/complex/complex.hpp
 )
 target_include_directories(complex PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/complex)
 
 add_library(rational
     prj.labs/rational/rational.cpp
-    prj.labs/rational/rational.h
+    prj.labs/rational/rational.hpp
 )
 target_include_directories(rational PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/rational)
 

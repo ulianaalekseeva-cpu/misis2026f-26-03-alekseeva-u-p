@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include "complex.h"
+#include "complex.hpp"
 
 int main() {
 	std::cout << std::fixed << std::setprecision(2); //выводит 2 числа после за€птой
