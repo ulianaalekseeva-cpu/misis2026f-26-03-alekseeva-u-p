@@ -20,58 +20,54 @@ add_library(rational
 )
 target_include_directories(rational PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/rational)
 
+# --- ИСПРАВЛЕННЫЙ БЛОК ДЛЯ STACK ---
+# Стек шаблонный, поэтому делаем его header-only (INTERFACE)
+add_library(stack INTERFACE)
+target_include_directories(stack INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/stack)
+target_sources(stack INTERFACE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/stack/stack.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/stack/stack.cpp
+)
+# ----------------------------------
+
 # ==========================================
 # 2. ТВОИ ЛИЧНЫЕ ПРОГРАММЫ (Для запуска вручную)
 # ==========================================
 
-# Проверяем, существует ли main.cpp, чтобы не было ошибки, если ты его удалишь
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/complex/main.cpp")
-    add_executable(my_complex_main prj.labs/complex/main.cpp)
-    target_link_libraries(my_complex_main PRIVATE complex)
-endif()
-
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/prj.labs/rational/main.cpp")
-    add_executable(my_rational_main prj.labs/rational/main.cpp)
-    target_link_libraries(my_rational_main PRIVATE rational)
-endif()
 
 # ==========================================
 # 3. АВТОСБОРКА КОДФОРСЕСА
 # ==========================================
 
-# Ищем только .cpp файлы в папке prj.codeforces (не заходя в другие папки)
 file(GLOB CODEFORCES_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/prj.codeforces/*.cpp")
 
 foreach(src ${CODEFORCES_SOURCES})
     get_filename_component(target_name ${src} NAME_WE)
-    # Добавляем префикс cf_, чтобы имена не пересекались
     add_executable(cf_${target_name} ${src})
 endforeach()
 
 # ==========================================
-# 4. АВТОСБОРКА ТЕСТОВ (ИСПРАВЛЕНО prj.tests вместо prj.test)
+# 4. АВТОСБОРКА ТЕСТОВ
 # ==========================================
 
-# Если папка с тестами существует, мы её обрабатываем
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/prj.tests")
     file(GLOB TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/prj.tests/*.cpp")
     foreach(src ${TEST_SOURCES})
         get_filename_component(target_name ${src} NAME_WE)
         add_executable(test_${target_name} ${src})
         
-        # Тесты должны линковаться с твоими библиотеками
-        # Обычно тесты требуют и complex, и rational, но можно добавить проверку по имени
         if(target_name MATCHES "complex")
             target_link_libraries(test_${target_name} PRIVATE complex)
         elseif(target_name MATCHES "rational")
             target_link_libraries(test_${target_name} PRIVATE rational)
+		elseif(target_name MATCHES "stack")
+            target_link_libraries(test_${target_name} PRIVATE stack)
         else()
-            target_link_libraries(test_${target_name} PRIVATE complex rational)
+            target_link_libraries(test_${target_name} PRIVATE complex rational stack)
         endif()
     endforeach()
 endif()
 
-# В некоторых системах проверки требуется добавить тесты через CTest
 enable_testing()
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/prj.tests")
     file(GLOB TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/prj.tests/*.cpp")
