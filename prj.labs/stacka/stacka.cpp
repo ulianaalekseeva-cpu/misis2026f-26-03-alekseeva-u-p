@@ -97,5 +97,5 @@ template class Stack<double>;
 template class Stack<std::string>;
 template class Stack<char>;
 template class Stack<int64_t>;
-;
+
 
